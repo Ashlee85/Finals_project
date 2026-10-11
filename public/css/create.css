@@ -1,0 +1,291 @@
+.create-page {
+    max-width: 960px;
+    margin: auto;
+    padding: 45px 24px 70px;
+}
+
+.create-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.create-eyebrow {
+    color: #28765b;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.create-heading h1 {
+    color: #174b3b;
+    font-size: clamp(27px, 4vw, 36px);
+    margin: 10px 0;
+    line-height: 1.25;
+}
+
+.create-heading p {
+    color: #707a72;
+    font-size: 13px;
+}
+
+.create-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 32px auto;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #858e87;
+}
+
+.progress-step > span {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #d5ddd5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.progress-step.active > span {
+    background: #174b3b;
+    border-color: #174b3b;
+    color: #fff;
+}
+
+.progress-step.active small {
+    color: #174b3b;
+    font-weight: 700;
+}
+
+.progress-step small {
+    font-size: 11px;
+}
+
+.progress-line {
+    width: 45px;
+    height: 1px;
+    background: #d5ddd5;
+}
+
+.portfolio-form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-card {
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #e0e6df;
+    border-radius: 11px;
+    box-shadow: 0 4px 15px #203b2b06;
+}
+
+.form-card-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding-bottom: 20px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #edf0ec;
+}
+
+.form-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f0e9;
+    color: #174b3b;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.form-card-heading h2 {
+    margin: 0 0 5px;
+    color: #174b3b;
+    font-size: 18px;
+}
+
+.form-card-heading p {
+    margin: 0;
+    color: #7a847c;
+    font-size: 12px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 21px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    margin-bottom: 8px;
+    color: #303b33;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.form-field label span {
+    color: #d95a34;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    border: 1px solid #dce3dc;
+    border-radius: 6px;
+    background: #fcfdfb;
+    padding: 12px 13px;
+    color: #202923;
+    font-size: 13px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: #28765b;
+    box-shadow: 0 0 0 3px #28765b14;
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.7;
+}
+
+.form-field input[type="file"] {
+    background: #f7f9f6;
+}
+
+.field-hint {
+    margin-top: 8px;
+    color: #778178;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.field-error {
+    color: #b63b2c;
+    margin-top: 6px;
+    font-size: 11px;
+}
+
+.current-photo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: #59645c;
+    font-size: 12px;
+}
+
+.current-photo img {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.cancel-button,
+.save-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 19px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cancel-button {
+    border: 1px solid #d7dfd7;
+    background: #fff;
+    color: #526056;
+}
+
+.save-button {
+    border: 0;
+    background: #174b3b;
+    color: #fff;
+}
+
+.save-button:hover {
+    background: #103b2e;
+}
+
+.save-button span {
+    font-size: 17px;
+}
+
+@media (max-width: 600px) {
+    .create-page {
+        padding: 32px 16px 45px;
+    }
+
+    .create-progress {
+        gap: 7px;
+    }
+
+    .progress-step {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .progress-step small {
+        font-size: 9px;
+    }
+
+    .progress-line {
+        width: 18px;
+    }
+
+    .form-card {
+        padding: 20px 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-field.full-width {
+        grid-column: auto;
+    }
+
+    .form-actions {
+        align-items: stretch;
+    }
+}

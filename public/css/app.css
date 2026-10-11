@@ -1,0 +1,258 @@
+:root {
+    --green: #174b3b;
+    --green-hover: #103b2e;
+    --orange: #f06432;
+    --background: #f3f5f3;
+    --white: #ffffff;
+    --text: #202923;
+    --muted: #707a72;
+    --border: #e1e6e1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+.site-header {
+    position: relative;
+    z-index: 10;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+    max-width: 1240px;
+    min-height: 76px;
+    padding: 12px 28px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--green);
+    font-size: 21px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.brand-mark {
+    font-size: 25px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.main-nav a,
+.footer-links a {
+    color: #4c574f;
+    font-size: 13px;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.main-nav a:hover,
+.footer-links a:hover {
+    color: var(--green);
+}
+
+.main-nav .nav-cta {
+    padding: 10px 17px;
+    border-radius: 6px;
+    background: var(--green);
+    color: #fff;
+}
+
+.main-nav .nav-cta:hover {
+    background: var(--green-hover);
+}
+
+.menu-toggle {
+    display: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 11px;
+    background: #fff;
+    color: var(--green);
+    cursor: pointer;
+}
+
+.site-footer {
+    background: #fff;
+    border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+    max-width: 1240px;
+    margin: auto;
+    padding: 23px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-brand {
+    font-size: 17px;
+}
+
+.footer-brand .brand-mark {
+    font-size: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-inner > p {
+    color: var(--muted);
+    font-size: 11px;
+    margin: 0;
+}
+
+.flash-message {
+    max-width: 1180px;
+    margin: 18px auto;
+    padding: 12px 18px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.success-message {
+    background: #e5f3e9;
+    color: #185d37;
+    border: 1px solid #c8e5d0;
+}
+
+.error-message {
+    background: #fff0ed;
+    color: #9e3022;
+    border: 1px solid #f1c9c1;
+}
+
+@media (max-width: 760px) {
+    .nav-container {
+        flex-wrap: wrap;
+        padding: 14px 18px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0;
+    }
+
+    .main-nav.nav-open {
+        display: flex;
+    }
+
+    .main-nav a {
+        padding: 12px 5px;
+    }
+
+    .main-nav .nav-cta {
+        text-align: center;
+        margin-top: 6px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px 18px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+}
+
+/* Portfolio Preview Actions */
+.preview-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 5%;
+    background: #f3f5f3;
+}
+
+.preview-actions a {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.change-template-btn {
+    background: #174b3b;
+    color: #ffffff;
+}
+
+.edit-portfolio-btn {
+    background: #f06432;
+    color: #ffffff;
+}
+
+.back-manage-btn {
+    background: #ffffff;
+    color: #174b3b;
+    border: 1px solid #174b3b;
+}
+
+.preview-actions a:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .preview-actions {
+        padding: 14px 5%;
+    }
+
+    .preview-actions a {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,231 @@
+
+.manage-page {
+    min-height: 70vh;
+    background: #f3f5f3;
+    padding: 55px 24px 80px;
+    color: #202923;
+    font-family: Arial, sans-serif;
+}
+
+.manage-container {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.manage-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 35px;
+}
+
+.manage-eyebrow {
+    color: #174b3b;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.manage-heading h1 {
+    margin: 10px 0;
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 5vw, 45px);
+}
+
+.manage-subtitle {
+    color: #69716b;
+    line-height: 1.6;
+}
+
+.manage-add-button {
+    display: inline-block;
+    background: #174b3b;
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.manage-add-button:hover {
+    background: #103a2d;
+}
+
+.manage-success {
+    background: #e0efe4;
+    color: #174b3b;
+    border: 1px solid #c6dfcc;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    border-radius: 5px;
+}
+
+.manage-summary {
+    margin-bottom: 18px;
+    color: #657069;
+    font-size: 14px;
+}
+
+.manage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.manage-card {
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #e0e5df;
+    border-radius: 8px;
+    padding: 23px;
+    box-shadow: 0 4px 15px rgb(25 50 35 / 5%);
+}
+
+.manage-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.manage-avatar,
+.manage-avatar-placeholder {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.manage-avatar-placeholder {
+    display: grid;
+    place-items: center;
+    background: #e4ece5;
+    color: #174b3b;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.manage-template-badge {
+    background: #edf2ed;
+    color: #174b3b;
+    border-radius: 20px;
+    padding: 7px 11px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.manage-card h2 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    margin: 0 0 7px;
+    overflow-wrap: anywhere;
+}
+
+.manage-email {
+    color: #174b3b;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.manage-about {
+    color: #626b64;
+    line-height: 1.7;
+    min-height: 48px;
+    overflow-wrap: anywhere;
+}
+
+.manage-date {
+    color: #858c86;
+    font-size: 12px;
+    margin: 18px 0;
+}
+
+.manage-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid #edf0ec;
+    padding-top: 16px;
+}
+
+.manage-actions form {
+    margin: 0;
+}
+
+.manage-action {
+    display: inline-block;
+    padding: 9px 12px;
+    border: 1px solid #dce3dc;
+    border-radius: 4px;
+    background: white;
+    color: #174b3b;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.manage-view {
+    background: #174b3b;
+    color: white;
+    border-color: #174b3b;
+}
+
+.manage-delete {
+    color: #b53c31;
+}
+
+.manage-empty {
+    padding: 65px 20px;
+    text-align: center;
+    background: #fff;
+    border: 1px dashed #cbd5cb;
+    border-radius: 8px;
+}
+
+.manage-empty-icon {
+    margin: 0 auto 18px;
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #e4ece5;
+    color: #174b3b;
+    font-size: 32px;
+}
+
+.manage-empty h2 {
+    font-family: Georgia, serif;
+}
+
+.manage-empty p {
+    color: #69716b;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+    .manage-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .manage-page {
+        padding: 35px 16px 55px;
+    }
+
+    .manage-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .manage-grid {
+        grid-template-columns: 1fr;
+    }
+}

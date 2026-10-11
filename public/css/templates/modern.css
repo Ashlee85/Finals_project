@@ -1,0 +1,94 @@
+
+.modern-portfolio {
+    --modern-bg: #141716;
+    --modern-panel: #202522;
+    --modern-orange: #f06432;
+    background: var(--modern-bg);
+    color: #f5f4ef;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.modern-portfolio * { box-sizing: border-box; }
+.modern-portfolio a { text-decoration: none; }
+
+.modern-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 8%;
+    border-bottom: 1px solid #303633;
+}
+
+.modern-logo { color: white; font-weight: 900; letter-spacing: 2px; }
+.modern-logo span { color: var(--modern-orange); }
+.modern-nav-link { color: #f5f4ef; font-size: 12px; letter-spacing: 1px; }
+
+.modern-main { max-width: 1100px; margin: auto; padding: 45px 25px; }
+
+.modern-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 45px 0 70px;
+}
+
+.modern-hero-text { flex: 1; }
+.modern-eyebrow { color: var(--modern-orange); letter-spacing: 3px; font-size: 12px; font-weight: bold; }
+.modern-hero h1 { font-size: clamp(40px, 7vw, 76px); line-height: 1; margin: 18px 0; overflow-wrap: anywhere; }
+.modern-hero h1 span, .modern-contact h2 span { color: var(--modern-orange); }
+.modern-hero-text > p:not(.modern-eyebrow) { color: #b8c0ba; line-height: 1.9; white-space: pre-line; }
+
+.modern-button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 20px;
+    color: #171a18;
+    background: var(--modern-orange);
+    font-weight: bold;
+}
+
+.modern-photo, .modern-photo-placeholder {
+    width: 245px;
+    height: 285px;
+    object-fit: cover;
+    border: 1px solid #555d57;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.modern-photo-placeholder {
+    display: grid;
+    place-items: center;
+    background: var(--modern-panel);
+    color: var(--modern-orange);
+    font-size: 90px;
+    font-weight: bold;
+}
+
+.modern-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+
+.modern-card {
+    background: var(--modern-panel);
+    border: 1px solid #303633;
+    padding: 27px;
+    border-radius: 5px;
+    overflow-wrap: anywhere;
+}
+
+.modern-number { color: var(--modern-orange); font-size: 12px; font-weight: bold; }
+.modern-card h2 { font-size: 25px; margin: 15px 0; }
+.modern-card div { line-height: 1.8; color: #c5cbc6; }
+.modern-contact { margin-top: 65px; padding: 35px 0; border-top: 1px solid #303633; }
+.modern-contact h2 { font-size: clamp(38px, 6vw, 60px); margin: 10px 0; }
+.modern-contact p, .modern-contact div { color: #c5cbc6; line-height: 1.8; overflow-wrap: anywhere; }
+.modern-footer { padding: 25px; border-top: 1px solid #303633; text-align: center; color: #d6d9d5; font-size: 12px; letter-spacing: 1px; }
+.modern-footer span { color: var(--modern-orange); }
+
+@media (max-width: 650px) {
+    .modern-hero { flex-direction: column-reverse; align-items: flex-start; }
+    .modern-photo, .modern-photo-placeholder { width: 175px; height: 200px; }
+    .modern-grid { grid-template-columns: 1fr; }
+    .modern-header { padding: 22px 6%; }
+}

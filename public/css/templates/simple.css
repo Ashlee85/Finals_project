@@ -1,0 +1,75 @@
+
+.simple-portfolio {
+    --simple-green: #174b3b;
+    --simple-paper: #f8f8f4;
+    background: var(--simple-paper);
+    color: #252c28;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.simple-portfolio * { box-sizing: border-box; }
+.simple-portfolio a { text-decoration: none; }
+
+.simple-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    border-bottom: 1px solid #dedfd8;
+}
+
+.simple-logo { font-weight: 800; letter-spacing: 2px; color: var(--simple-green); }
+.simple-logo span { color: #c57a45; }
+.simple-contact-link { color: var(--simple-green); font-weight: 700; }
+
+.simple-main { max-width: 1000px; margin: auto; padding: 40px 25px; }
+
+.simple-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 45px;
+    padding: 55px 0 70px;
+}
+
+.simple-intro { flex: 1; }
+.simple-label { font-size: 12px; letter-spacing: 3px; color: var(--simple-green); font-weight: bold; }
+.simple-hero h1 { font-family: Georgia, serif; font-size: clamp(38px, 6vw, 64px); margin: 15px 0; line-height: 1.1; }
+.simple-description { color: #626963; line-height: 1.9; white-space: pre-line; }
+
+.simple-button {
+    display: inline-block;
+    margin-top: 15px;
+    background: var(--simple-green);
+    color: white;
+    padding: 13px 22px;
+    border-radius: 3px;
+}
+
+.simple-photo, .simple-photo-placeholder {
+    width: 230px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.simple-photo-placeholder {
+    display: grid;
+    place-items: center;
+    background: #dce5dc;
+    color: var(--simple-green);
+    font: 80px Georgia, serif;
+}
+
+.simple-section { padding: 28px 0; border-top: 1px solid #dedfd8; }
+.simple-section h2 { font: 28px Georgia, serif; color: var(--simple-green); }
+.simple-section p, .simple-content { line-height: 1.8; overflow-wrap: anywhere; }
+.simple-footer { padding: 25px; text-align: center; border-top: 1px solid #dedfd8; color: #737a74; font-size: 13px; }
+
+@media (max-width: 650px) {
+    .simple-hero { flex-direction: column-reverse; align-items: flex-start; padding-top: 35px; }
+    .simple-photo, .simple-photo-placeholder { width: 170px; height: 190px; }
+    .simple-header { padding: 20px 6%; }
+}
