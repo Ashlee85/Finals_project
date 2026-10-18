@@ -116,13 +116,13 @@
     overflow-wrap: anywhere;
 }
 
-/* MAIN CONTENT */
+
 
 .creative-main {
     width: 100%;
 }
 
-/* EDUCATION, SKILLS AND LINKS */
+
 
 .creative-overview {
     display: grid;
@@ -171,7 +171,7 @@
     white-space: pre-line;
 }
 
-/* ABOUT ME */
+
 
 .creative-about-section {
     padding: 36px 32px 32px;
@@ -196,7 +196,7 @@
     white-space: pre-line;
 }
 
-/* DIVIDER */
+
 
 .creative-divider {
     height: 2px;
@@ -204,7 +204,7 @@
     background: #39302c;
 }
 
-/* PROJECTS AND WORK EXPERIENCE */
+
 
 .creative-work-grid {
     display: grid;
@@ -227,7 +227,7 @@
     white-space: pre-line;
 }
 
-/* FOOTER */
+
 
 .creative-footer {
     display: flex;
@@ -247,7 +247,7 @@
     letter-spacing: 1px;
 }
 
-/* PREVIEW ACTION BUTTONS */
+
 
 .preview-actions {
     display: flex;
@@ -309,7 +309,7 @@
     }
 }
 
-/* MOBILE */
+
 
 @media (max-width: 520px) {
     .creative-portfolio {
