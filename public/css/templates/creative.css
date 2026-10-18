@@ -1,96 +1,374 @@
 
+/* ==========================================
+   CREATIVE TEMPLATE 3
+   Orange, Red, Black and White Theme
+   Layout preserved
+========================================== */
+
 .creative-portfolio {
-    --creative-bg: #171614;
-    --creative-panel: #24221f;
-    --creative-orange: #ff6b35;
-    background: var(--creative-bg);
-    color: #f4f0e9;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
+    --creative-dark: #101010;
+    --creative-accent: #ff641f;
+    --creative-cream: #191919;
+    --creative-white: #101010;
+    --creative-text: #f5f5f5;
+    --creative-muted: #b8b8b8;
+    --creative-line: #38302c;
+
+    width: 100%;
+    max-width: 1100px;
+    margin: 28px auto;
+    background: var(--creative-white);
+    color: var(--creative-text);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
 }
 
-.creative-portfolio * { box-sizing: border-box; }
-.creative-portfolio a { text-decoration: none; }
-
-.creative-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 8%;
-    border-bottom: 1px solid #38352f;
+.creative-portfolio *,
+.creative-portfolio *::before,
+.creative-portfolio *::after {
+    box-sizing: border-box;
 }
 
-.creative-logo { color: white; font-size: 16px; line-height: 1.1; font-weight: 900; letter-spacing: 2px; }
-.creative-logo span { color: var(--creative-orange); font-size: 11px; }
-.creative-menu { color: var(--creative-orange); font-size: 12px; letter-spacing: 1px; }
-
-.creative-main { max-width: 1100px; margin: auto; padding: 45px 25px; }
-.creative-index, .creative-small-label, .creative-section-label { color: var(--creative-orange); font-size: 11px; letter-spacing: 2px; font-weight: bold; }
-
-.creative-hero { padding: 30px 0 75px; }
-.creative-hero > h1 { font-size: clamp(52px, 10vw, 105px); line-height: .92; letter-spacing: -4px; margin: 35px 0; }
-.creative-hero > h1 span:not(.creative-dot) { color: transparent; -webkit-text-stroke: 1px var(--creative-orange); }
-.creative-dot { color: var(--creative-orange); }
-
-.creative-intro {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 30px;
-    align-items: center;
-    max-width: 750px;
-    margin-left: auto;
-}
-
-.creative-photo, .creative-photo-placeholder {
-    width: 180px;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 3px;
-}
-
-.creative-photo-placeholder {
-    display: grid;
-    place-items: center;
-    background: var(--creative-panel);
-    color: var(--creative-orange);
-    font-size: 70px;
-    font-weight: bold;
-}
-
-.creative-intro h2 { font: 30px Georgia, serif; margin: 12px 0; overflow-wrap: anywhere; }
-.creative-intro p:not(.creative-small-label) { color: #c6c0b6; line-height: 1.8; white-space: pre-line; }
-
-.creative-section {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 30px;
-    padding: 35px 0;
-    border-top: 1px solid #38352f;
-}
-
-.creative-section-label { padding-top: 12px; }
-.creative-section-body h2 { font-size: clamp(28px, 4vw, 42px); margin: 0 0 20px; }
-.creative-section-body h2 span { color: var(--creative-orange); }
-.creative-section-body > div { line-height: 1.9; color: #c6c0b6; overflow-wrap: anywhere; }
-
-.creative-contact {
-    margin-top: 50px;
-    padding: 40px;
-    background: var(--creative-panel);
-    border-left: 4px solid var(--creative-orange);
+.creative-portfolio h1,
+.creative-portfolio h2,
+.creative-portfolio p {
     overflow-wrap: anywhere;
 }
 
-.creative-contact h2 { font-size: clamp(35px, 6vw, 65px); line-height: 1.05; }
-.creative-contact h2 span { color: var(--creative-orange); }
-.creative-contact p:not(.creative-small-label), .creative-contact div { color: #c6c0b6; line-height: 1.8; }
-.creative-footer { text-align: center; padding: 25px; border-top: 1px solid #38352f; font-weight: bold; font-size: 12px; letter-spacing: 1px; }
-.creative-footer span { color: var(--creative-orange); }
+/* PROFILE HEADER */
 
-@media (max-width: 650px) {
-    .creative-hero > h1 { letter-spacing: -2px; }
-    .creative-intro { grid-template-columns: 1fr; margin-left: 0; }
-    .creative-section { grid-template-columns: 1fr; gap: 12px; }
-    .creative-contact { padding: 25px; }
-    .creative-header { padding: 22px 6%; }
+.creative-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 38px;
+    background: linear-gradient(
+        120deg,
+        #ff4b1f 0%,
+        #ff641f 48%,
+        #6f1718 100%
+    );
+    color: #ffffff;
+}
+
+.creative-profile-picture {
+    width: 175px;
+    height: 175px;
+    flex: 0 0 175px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #f4f4f4;
+}
+
+.creative-profile-picture img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.creative-photo-placeholder {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #171717;
+    font-size: 70px;
+    font-weight: 800;
+}
+
+.creative-profile-details {
+    min-width: 0;
+    flex: 1;
+}
+
+.creative-eyebrow {
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.creative-profile-details h1 {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: clamp(30px, 4.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.12;
+}
+
+.creative-profile-subtitle {
+    margin: 0 0 18px;
+    color: #fff0e8;
+    font-size: clamp(17px, 2.5vw, 26px);
+}
+
+.creative-contact-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.creative-contact-details span {
+    overflow-wrap: anywhere;
+}
+
+/* MAIN CONTENT */
+
+.creative-main {
+    width: 100%;
+}
+
+/* EDUCATION, SKILLS AND LINKS */
+
+.creative-overview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    padding: 32px;
+    background: #191919;
+}
+
+.creative-overview-item {
+    min-width: 0;
+}
+
+.creative-number {
+    display: block;
+    margin-bottom: 12px;
+    color: #ff641f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.creative-portfolio .creative-overview-item h2,
+.creative-portfolio .creative-about-section h2,
+.creative-portfolio .creative-work-item h2 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: clamp(21px, 2.6vw, 30px);
+    font-weight: 750;
+    line-height: 1.25;
+}
+
+.creative-portfolio h2 span {
+    color: #ff641f;
+}
+
+.creative-content {
+    color: #c4c4c4;
+    font-size: 16px;
+    line-height: 1.8;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.creative-overview-item .creative-content {
+    white-space: pre-line;
+}
+
+/* ABOUT ME */
+
+.creative-about-section {
+    padding: 36px 32px 32px;
+    background: #101010;
+}
+
+.creative-section-label {
+    margin-bottom: 14px;
+    color: #ff641f;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.6;
+}
+
+.creative-about-section h2 {
+    margin-bottom: 20px;
+}
+
+.creative-about-section .creative-content {
+    color: #c4c4c4;
+    white-space: pre-line;
+}
+
+/* DIVIDER */
+
+.creative-divider {
+    height: 2px;
+    margin: 0 32px;
+    background: #39302c;
+}
+
+/* PROJECTS AND WORK EXPERIENCE */
+
+.creative-work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 42px;
+    padding: 34px 32px 42px;
+    background: #101010;
+}
+
+.creative-work-item {
+    min-width: 0;
+}
+
+.creative-work-item h2 {
+    margin-bottom: 22px;
+}
+
+.creative-work-item .creative-content {
+    color: #b8b8b8;
+    white-space: pre-line;
+}
+
+/* FOOTER */
+
+.creative-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 22px 32px;
+    background: #080808;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.creative-footer span:last-child {
+    color: #ff641f;
+    letter-spacing: 1px;
+}
+
+/* PREVIEW ACTION BUTTONS */
+
+.preview-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.preview-actions a {
+    display: inline-block;
+    padding: 11px 17px;
+    border: 1px solid #ff641f;
+    border-radius: 7px;
+    color: #ff641f;
+    background: #151515;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.preview-actions a:hover {
+    color: #ffffff;
+    background: #ff641f;
+}
+
+/* TABLET */
+
+@media (max-width: 720px) {
+    .creative-profile-header {
+        gap: 22px;
+        padding: 26px;
+    }
+
+    .creative-profile-picture {
+        width: 130px;
+        height: 130px;
+        flex-basis: 130px;
+    }
+
+    .creative-overview {
+        gap: 22px;
+        padding: 26px;
+    }
+
+    .creative-about-section {
+        padding: 30px 26px;
+    }
+
+    .creative-divider {
+        margin: 0 26px;
+    }
+
+    .creative-work-grid {
+        gap: 28px;
+        padding: 30px 26px 36px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+    .creative-portfolio {
+        margin: 14px auto;
+        border-radius: 8px;
+    }
+
+    .creative-profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 25px 20px;
+    }
+
+    .creative-profile-picture {
+        width: 115px;
+        height: 115px;
+        flex-basis: 115px;
+    }
+
+    .creative-contact-details {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .creative-overview {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        padding: 28px 20px;
+    }
+
+    .creative-about-section {
+        padding: 28px 20px;
+    }
+
+    .creative-divider {
+        margin: 0 20px;
+    }
+
+    .creative-work-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 28px 20px 34px;
+    }
+
+    .creative-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 22px 20px;
+    }
+
+    .preview-actions {
+        justify-content: flex-start;
+    }
 }
