@@ -1,41 +1,60 @@
-
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\PortfolioController;
+use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
 
-// Create a new portfolio
-Route::get('/create-portfolio', [PortfolioController::class, 'create'])
-    ->name('portfolio.create');
+// Login / registration (only for visitors who are not logged in)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
 
-Route::post('/create-portfolio', [PortfolioController::class, 'store'])
-    ->name('portfolio.store');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+});
 
-// Template selection
-Route::get('/templates/{portfolio}', [PortfolioController::class, 'templates'])
-    ->name('portfolio.templates');
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
 
-Route::post('/templates/{portfolio}', [PortfolioController::class, 'selectTemplate'])
-    ->name('portfolio.select-template');
+// Everything about portfolios requires login
+Route::middleware('auth')->group(function () {
 
-// Portfolio preview
-Route::get('/preview/{portfolio}/{template?}', [PortfolioController::class, 'preview'])
-    ->name('portfolio.preview');
+    // Create a new portfolio
+    Route::get('/create-portfolio', [PortfolioController::class, 'create'])
+        ->name('portfolio.create');
 
-// Manage saved portfolios
-Route::get('/manage-portfolio', [PortfolioController::class, 'manage'])
-    ->name('portfolio.manage');
+    Route::post('/create-portfolio', [PortfolioController::class, 'store'])
+        ->name('portfolio.store');
 
-// Edit portfolio
-Route::get('/portfolio/{portfolio}/edit', [PortfolioController::class, 'edit'])
-    ->name('portfolio.edit');
+    // Template selection
+    Route::get('/templates/{portfolio}', [PortfolioController::class, 'templates'])
+        ->name('portfolio.templates');
 
-// Update portfolio
-Route::put('/portfolio/{portfolio}', [PortfolioController::class, 'update'])
-    ->name('portfolio.update');
+    Route::post('/templates/{portfolio}', [PortfolioController::class, 'selectTemplate'])
+        ->name('portfolio.select-template');
 
-// Delete portfolio
-Route::delete('/portfolio/{portfolio}', [PortfolioController::class, 'destroy'])
-    ->name('portfolio.destroy');
+    // Save Portfolio (button at the bottom of the preview)
+    Route::post('/portfolio/{portfolio}/save', [PortfolioController::class, 'save'])
+        ->name('portfolio.save');
+
+    // Portfolio preview
+    Route::get('/preview/{portfolio}/{template?}', [PortfolioController::class, 'preview'])
+        ->name('portfolio.preview');
+
+    // My Portfolios
+    Route::get('/manage-portfolio', [PortfolioController::class, 'manage'])
+        ->name('portfolio.manage');
+
+    // Edit / update / delete
+    Route::get('/portfolio/{portfolio}/edit', [PortfolioController::class, 'edit'])
+        ->name('portfolio.edit');
+
+    Route::put('/portfolio/{portfolio}', [PortfolioController::class, 'update'])
+        ->name('portfolio.update');
+
+    Route::delete('/portfolio/{portfolio}', [PortfolioController::class, 'destroy'])
+        ->name('portfolio.destroy');
+});

@@ -1,14 +1,22 @@
-
 @extends('layouts.app')
+
+@section('title', 'Choose Template - StudentPortfolio')
 
 @section('content')
 <div class="template-page">
     <div class="template-container">
 
+        @include('partials.progress', ['step' => 2])
+
         <div class="template-heading">
             <p class="template-eyebrow">MAKE IT YOUR OWN</p>
             <h1>Choose Your Portfolio Style</h1>
             <p>Select a design for {{ $portfolio->full_name }}.</p>
+            <p>
+                <span class="pf-status pf-status-{{ $portfolio->status }}">
+                    {{ $portfolio->status === 'saved' ? 'Saved' : 'Draft (not saved yet)' }}
+                </span>
+            </p>
         </div>
 
         @if($errors->any())
@@ -116,7 +124,7 @@
                    class="template-back">← Edit Information</a>
 
                 <button type="submit" class="template-continue">
-                    Use Selected Template →
+                    Use Selected Template
                 </button>
             </div>
         </form>

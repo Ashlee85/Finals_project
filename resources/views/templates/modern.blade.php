@@ -3,22 +3,10 @@
 
 @section('content')
 
-<div class="preview-actions">
-    <a href="{{ route('portfolio.templates', $portfolio->id) }}"
-       class="change-template-btn">
-        ← Change Template
-    </a>
 
-    <a href="{{ route('portfolio.edit', $portfolio->id) }}"
-       class="edit-portfolio-btn">
-        Edit Portfolio
-    </a>
+@include('partials.preview-actions')
 
-    <a href="{{ route('portfolio.manage') }}"
-       class="back-manage-btn">
-        Manage Portfolios
-    </a>
-</div>
+<div class="modern-portfolio">
 
 <div class="modern-portfolio">
     <header class="modern-header">
@@ -90,4 +78,5 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/templates/modern.css') }}">
+    
 @endpush

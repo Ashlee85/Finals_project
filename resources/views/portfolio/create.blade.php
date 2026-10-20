@@ -14,13 +14,7 @@
         <p>Add your information below to build your personal portfolio.</p>
     </div>
 
-    <div class="create-progress">
-        <div class="progress-step active"><span>1</span><small>Your Information</small></div>
-        <div class="progress-line"></div>
-        <div class="progress-step"><span>2</span><small>Choose Template</small></div>
-        <div class="progress-line"></div>
-        <div class="progress-step"><span>3</span><small>Preview</small></div>
-    </div>
+    @include('partials.progress', ['step' => 1])
 
     <form
         action="{{ isset($portfolio) ? route('portfolio.update', $portfolio->id) : route('portfolio.store') }}"
@@ -47,7 +41,8 @@
                     <label for="full_name">Full Name <span>*</span></label>
                     <input id="full_name" name="full_name" type="text"
                         value="{{ old('full_name', $portfolio->full_name ?? '') }}"
-                        placeholder="Enter your full name" required>
+                        placeholder="Enter your full name" maxlength="255"
+                        pattern="[\p{L}\p{M} ]+" title="Letters and spaces only" required>
                     @error('full_name') <small class="field-error">{{ $message }}</small> @enderror
                 </div>
 
@@ -159,9 +154,20 @@
         <div class="form-actions">
             <a href="{{ route('portfolio.manage') }}" class="cancel-button">Cancel</a>
             <button type="submit" class="save-button">
-                {{ isset($portfolio) ? 'Update Portfolio' : 'Save & Choose Template' }} <span>→</span>
+                {{ isset($portfolio) && $portfolio->status === 'saved' ? 'Update Portfolio' : 'Save & Choose Template' }} <span>→</span>
             </button>
         </div>
     </form>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    const nameInput = document.getElementById('full_name');
+    if (nameInput) {
+        nameInput.addEventListener('input', function () {
+            this.value = this.value.replace(/[^\p{L}\p{M} ]/gu, '');
+        });
+    }
+</script>
+@endpush

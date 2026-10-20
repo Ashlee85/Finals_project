@@ -1,5 +1,6 @@
-
 @extends('layouts.app')
+
+@section('title', 'My Portfolios - StudentPortfolio')
 
 @section('content')
 <div class="manage-page">
@@ -8,9 +9,9 @@
         <div class="manage-heading">
             <div>
                 <p class="manage-eyebrow">YOUR WORKSPACE</p>
-                <h1>Manage Portfolios</h1>
+                <h1>My Portfolios</h1>
                 <p class="manage-subtitle">
-                    View, edit, and manage all your saved portfolios.
+                    View, edit, and manage all your portfolios.
                 </p>
             </div>
 
@@ -18,12 +19,6 @@
                 + Create Portfolio
             </a>
         </div>
-
-        @if(session('success'))
-            <div class="manage-success">
-                {{ session('success') }}
-            </div>
-        @endif
 
         @if($portfolios->isEmpty())
             <div class="manage-empty">
@@ -36,11 +31,21 @@
             </div>
         @else
             <div class="manage-summary">
-                <span>{{ $portfolios->count() }} saved portfolio(s)</span>
+                <span>{{ $portfolios->count() }} portfolio(s)</span>
             </div>
 
             <div class="manage-grid">
                 @foreach($portfolios as $portfolio)
+                    @php
+                        $slug = match ((int) $portfolio->selected_template) {
+                            1 => 'simple',
+                            2 => 'modern',
+                            3 => 'creative',
+                            default => 'simple',
+                        };
+                        $isSaved = $portfolio->status === 'saved';
+                    @endphp
+
                     <article class="manage-card">
 
                         <div class="manage-card-top">
@@ -57,48 +62,39 @@
                             @endif
 
                             <span class="manage-template-badge">
-                                @switch((int) $portfolio->selected_template)
-                                    @case(1) Simple @break
-                                    @case(2) Modern @break
-                                    @case(3) Creative @break
-                                    @default Simple
-                                @endswitch
+                                {{ ucfirst($slug) }}
                             </span>
                         </div>
 
                         <h2>{{ $portfolio->full_name }}</h2>
                         <p class="manage-email">{{ $portfolio->email }}</p>
 
+                        <p>
+                            <span class="pf-status pf-status-{{ $portfolio->status }}">
+                                {{ $isSaved ? 'Saved' : 'Draft' }}
+                            </span>
+                        </p>
+
                         <p class="manage-about">
                             {{ \Illuminate\Support\Str::limit($portfolio->about_me, 110) }}
                         </p>
 
                         <p class="manage-date">
-                            Saved {{ $portfolio->created_at->format('M d, Y') }}
+                            {{ $isSaved ? 'Saved' : 'Draft started' }}
+                            {{ $portfolio->updated_at->format('M d, Y') }}
                         </p>
 
                         <div class="manage-actions">
-                            <a
-                                href="{{ route('portfolio.preview', [
-                                    'portfolio' => $portfolio->id,
-                                    'template' => match ((int) $portfolio->selected_template) {
-                                        1 => 'simple',
-                                        2 => 'modern',
-                                        3 => 'creative',
-                                        default => 'simple'
-                                    }
-                                ]) }}"
-                                class="manage-action manage-view"
-                            >
-                                View
-                            </a>
+                            @if($isSaved)
+                                <a href="{{ route('portfolio.preview', ['portfolio' => $portfolio->id, 'template' => $slug]) }}"
+                                   class="manage-action manage-view">View</a>
+                            @else
+                                <a href="{{ route('portfolio.templates', $portfolio->id) }}"
+                                   class="manage-action manage-view">Continue</a>
+                            @endif
 
-                            <a
-                                href="{{ route('portfolio.edit', $portfolio->id) }}"
-                                class="manage-action manage-edit"
-                            >
-                                Edit
-                            </a>
+                            <a href="{{ route('portfolio.edit', $portfolio->id) }}"
+                               class="manage-action manage-edit">Edit</a>
 
                             <form
                                 action="{{ route('portfolio.destroy', $portfolio->id) }}"

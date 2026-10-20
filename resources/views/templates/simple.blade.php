@@ -7,22 +7,11 @@
 
 @section('content')
 
-<div class="preview-actions">
-    <a href="{{ route('portfolio.templates', $portfolio->id) }}"
-       class="change-template-btn">
-        ← Change Template
-    </a>
+@include('partials.preview-actions')
 
-    <a href="{{ route('portfolio.edit', $portfolio->id) }}"
-       class="edit-portfolio-btn">
-        Edit Portfolio
-    </a>
+<div class="simple-portfolio">
 
-    <a href="{{ route('portfolio.manage') }}"
-       class="back-manage-btn">
-        Manage Portfolios
-    </a>
-</div>
+    <header class="simple-header">
 
 <div class="simple-portfolio">
 
