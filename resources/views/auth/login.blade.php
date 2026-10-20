@@ -19,9 +19,11 @@
 
             <div class="auth-field">
                 <label for="password">Password</label>
-                <div class="password-wrapper">
-                    <input id="password" type="password" name="password" required>
-                    <button type="button" class="toggle-password" data-target="password" aria-label="Show password">
+                <div class="password-wrapper" style="position:relative;display:block;width:100%;">
+                    <input id="password" type="password" name="password" required
+                           style="display:block;width:100%;box-sizing:border-box;padding-right:48px;">
+                    <button type="button" class="toggle-password" aria-label="Show password"
+                            style="display:none;position:absolute;top:50%;right:12px;transform:translateY(-50%);background:none;border:none;padding:4px;margin:0;cursor:pointer;color:#6b7280;align-items:center;">
                         <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -71,8 +73,8 @@
 
         function sync() {
             const hasValue = input.value.length > 0;
-            wrapper.classList.toggle('has-value', hasValue);
-            if (!hasValue) setVisible(false); // reset when the field is emptied
+            btn.style.display = hasValue ? 'flex' : 'none';
+            if (!hasValue) setVisible(false);
         }
 
         input.addEventListener('input', sync);
@@ -83,4 +85,4 @@
         });
     });
 </script>
-@endpush    
+@endpush
