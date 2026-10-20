@@ -69,11 +69,9 @@ Verify these field names against your actual database.
 - **Source Code:** GitHub
 
 **Published Website URL:**  
-https://studentportfolio-production.up.railway.app
-
+http://finalsproject-production-51be.up.railway.app
 **GitHub Repository URL:**  
-https://github.com/Ashlee85/Student_Portfolio
-
+https://github.com/Ashlee85/Finals_project
 ## Project Documentation
 A separate project documentation file should contain screenshots of the Home Page, Portfolio Information Page, Template Selection Page, Portfolio Preview Page, Manage Portfolio Page, and all three portfolio templates.
 
