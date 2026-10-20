@@ -88,6 +88,14 @@
                             @if($isSaved)
                                 <a href="{{ route('portfolio.preview', ['portfolio' => $portfolio->id, 'template' => $slug]) }}"
                                    class="manage-action manage-view">View</a>
+
+                                @if($portfolio->slug)
+                                    <button type="button"
+                                            class="manage-action manage-view"
+                                            data-copy="{{ route('portfolio.public', $portfolio->slug) }}">
+                                        Copy Link
+                                    </button>
+                                @endif
                             @else
                                 <a href="{{ route('portfolio.templates', $portfolio->id) }}"
                                    class="manage-action manage-view">Continue</a>
@@ -121,4 +129,26 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/manage.css') }}">
+@endpush
+
+@push('scripts')
+<script>
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const url = btn.dataset.copy;
+            const label = btn.textContent;
+
+            function done() {
+                btn.textContent = 'Link copied!';
+                setTimeout(function () { btn.textContent = label; }, 1800);
+            }
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(done);
+            } else {
+                window.prompt('Copy this link:', url);
+            }
+        });
+    });
+</script>
 @endpush

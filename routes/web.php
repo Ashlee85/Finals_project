@@ -2,9 +2,14 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\PublicPortfolioController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
+
+// Public, read-only portfolio page (no login needed)
+Route::get('/p/{slug}', [PublicPortfolioController::class, 'show'])
+    ->name('portfolio.public');
 
 // Login / registration (only for visitors who are not logged in)
 Route::middleware('guest')->group(function () {
@@ -36,11 +41,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/templates/{portfolio}', [PortfolioController::class, 'selectTemplate'])
         ->name('portfolio.select-template');
 
-    // Save Portfolio (button at the bottom of the preview)
+    // Save Portfolio / Save Changes
     Route::post('/portfolio/{portfolio}/save', [PortfolioController::class, 'save'])
         ->name('portfolio.save');
 
-    // Portfolio preview
+    // Save to Draft
+    Route::post('/portfolio/{portfolio}/draft', [PortfolioController::class, 'saveDraft'])
+        ->name('portfolio.draft');
+
+    // Portfolio preview (owner only)
     Route::get('/preview/{portfolio}/{template?}', [PortfolioController::class, 'preview'])
         ->name('portfolio.preview');
 

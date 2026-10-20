@@ -26,13 +26,47 @@
 
             <div class="auth-field">
                 <label for="password">Password (at least 8 characters)</label>
-                <input id="password" type="password" name="password" required>
+                <div class="password-wrapper">
+                    <input id="password" type="password" name="password" required>
+                    <button type="button" class="toggle-password" data-target="password" aria-label="Show password">
+                        <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="display:none">
+                            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                            <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/>
+                            <line x1="1" y1="1" x2="23" y2="23"/>
+                        </svg>
+                    </button>
+                </div>
                 @error('password') <small class="field-error">{{ $message }}</small> @enderror
             </div>
 
             <div class="auth-field">
                 <label for="password_confirmation">Confirm Password</label>
-                <input id="password_confirmation" type="password" name="password_confirmation" required>
+                <div class="password-wrapper">
+                    <input id="password_confirmation" type="password" name="password_confirmation" required>
+                    <button type="button" class="toggle-password" data-target="password_confirmation" aria-label="Show password">
+                        <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="display:none">
+                            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                            <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/>
+                            <line x1="1" y1="1" x2="23" y2="23"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <button type="submit" class="auth-btn">Sign Up</button>
@@ -53,5 +87,32 @@
             this.value = this.value.replace(/[^\p{L}\p{M} ]/gu, '');
         });
     }
+
+   document.querySelectorAll('.password-wrapper').forEach(function (wrapper) {
+        const input = wrapper.querySelector('input');
+        const btn = wrapper.querySelector('.toggle-password');
+        const eye = btn.querySelector('.icon-eye');
+        const eyeOff = btn.querySelector('.icon-eye-off');
+
+        function setVisible(show) {
+            input.type = show ? 'text' : 'password';
+            eye.style.display = show ? 'none' : 'block';
+            eyeOff.style.display = show ? 'block' : 'none';
+            btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+        }
+
+        function sync() {
+            const hasValue = input.value.length > 0;
+            wrapper.classList.toggle('has-value', hasValue);
+            if (!hasValue) setVisible(false); // reset when the field is emptied
+        }
+
+        input.addEventListener('input', sync);
+        sync();
+
+        btn.addEventListener('click', function () {
+            setVisible(input.type === 'password');
+        });
+    });
 </script>
 @endpush

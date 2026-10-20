@@ -58,7 +58,9 @@
                     <label for="contact_number">Contact Number <span>*</span></label>
                     <input id="contact_number" name="contact_number" type="tel"
                         value="{{ old('contact_number', $portfolio->contact_number ?? '') }}"
-                        placeholder="Enter contact number" required>
+                        placeholder="Enter contact number" inputmode="numeric"
+                        pattern="[0-9]{7,15}" minlength="7" maxlength="15"
+                        title="Numbers only (7 to 15 digits)" required>
                     @error('contact_number') <small class="field-error">{{ $message }}</small> @enderror
                 </div>
 
@@ -153,7 +155,8 @@
 
         <div class="form-actions">
             <a href="{{ route('portfolio.manage') }}" class="cancel-button">Cancel</a>
-            <button type="submit" class="save-button">
+
+            <button type="submit" name="action" value="continue" class="save-button">
                 {{ isset($portfolio) && $portfolio->status === 'saved' ? 'Update Portfolio' : 'Save & Choose Template' }} <span>→</span>
             </button>
         </div>
@@ -167,6 +170,13 @@
     if (nameInput) {
         nameInput.addEventListener('input', function () {
             this.value = this.value.replace(/[^\p{L}\p{M} ]/gu, '');
+        });
+    }
+
+    const phoneInput = document.getElementById('contact_number');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9]/g, '');
         });
     }
 </script>

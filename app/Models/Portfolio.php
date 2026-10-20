@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Portfolio extends Model
 {
@@ -25,10 +26,23 @@ class Portfolio extends Model
         'social_links',
         'selected_template',
         'status',
+        'slug',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Builds a public link name like "juan-dela-cruz-x7k2pq".
+    public static function makeSlug(string $name): string
+    {
+        $base = Str::slug($name) ?: 'portfolio';
+
+        do {
+            $slug = $base . '-' . Str::lower(Str::random(6));
+        } while (static::where('slug', $slug)->exists());
+
+        return $slug;
     }
 }
