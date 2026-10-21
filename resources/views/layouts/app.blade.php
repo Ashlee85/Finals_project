@@ -41,7 +41,7 @@
                     <a href="{{ route('portfolio.manage') }}"
                        class="{{ request()->routeIs('portfolio.manage') ? 'active' : '' }}">My Portfolios</a>
 
-                     @unless(request()->routeIs('portfolio.create', 'portfolio.store', 'portfolio.edit', 'portfolio.templates', 'portfolio.preview'))
+                    @unless(request()->routeIs('portfolio.manage', 'portfolio.create', 'portfolio.store', 'portfolio.edit', 'portfolio.templates', 'portfolio.preview'))
                         <a href="{{ route('portfolio.create') }}"
                            class="nav-cta">Create Portfolio</a>
                     @endunless
